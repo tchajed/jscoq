@@ -2,7 +2,7 @@
 JOBS=8
 
 # Directory where the coq sources are
-COQDIR=~/external/coq-v8.6+32bit/
+COQDIR=~/external/coq-master+32bit/
 
 # Addons to build
 ADDONS =
@@ -19,5 +19,5 @@ ADDONS_PATH=/home/egallego/external/coq
 HOTT_COQLIB=$(ADDONS_PATH)/HoTT/coq/theories/
 
 RELEASE_DIR=~/research/jscoq-builds/
-WEB_DIR=~/x80/rhino-coq/v8.6/
+WEB_DIR=~/x80/rhino-trunk/
 HOTT_RELEASE=~/x80/rhino-hott/

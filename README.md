@@ -21,6 +21,9 @@ using Google Chrome Beta with the
 [chrome://flags/#enable-javascript-harmony](chrome://flags/#enable-javascript-harmony)
 flag enabled; this setup greatly alleviates the problem.
 
+Newer Chromes use the Ignition engine, for that, you must enable
+`--js-flags="--harmony-tailcalls"` tail call optimization separately.
+
 **Warning for Chrome users:** be aware of privacy/DRM issues in Chrome
 [bug page](https://bugs.chromium.org/p/chromium/issues/detail?id=686430) . We recommend Chrome just for jsCoq, _not for other uses_.
 
@@ -323,7 +326,7 @@ $ ./build.sh
 * To run jscoq in locally you may need to start your browser as:
 
   ```
-$ google-chrome-beta --allow-file-access-from-files --js-flags="--stack-size=65536" index.html
+$ google-chrome-beta --allow-file-access-from-files --js-flags="--stack-size=65536" newide.html
   ```
 
 * Profit!

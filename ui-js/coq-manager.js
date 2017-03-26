@@ -154,6 +154,7 @@ class CoqManager {
             debug:   true,
             wrapper_id: 'ide-wrapper',
             base_path:  "./",
+            implicit_libs: false,
             init_pkgs: ['init'],
             all_pkgs:  ['init', 'math-comp',
                         'coq-base', 'coq-arith', 'coq-reals',
@@ -631,7 +632,7 @@ class CoqManager {
             bundle => this.packages.pkg_info[bundle].pkgs
         ).flatten().map( pkg => pkg.pkg_id );
 
-        this.coq.sendCommand(["Init", load_lib, load_paths]);
+        this.coq.sendCommand(["Init", this.options.implicit_libs, load_lib, load_paths]);
         // Done!
     }
 

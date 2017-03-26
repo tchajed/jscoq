@@ -51,8 +51,8 @@ type jscoq_cmd =
   | InfoPkg of string * string list
   | LoadPkg of string * string
 
-  (*           initial_imports      load paths              *)
-  | Init    of string list list   * string list list
+  (*           implicit initial_imports      load paths     *)
+  | Init    of bool   * string list list   * string list list
 
   (*           ontop       new      sentence                *)
   | Add     of Stateid.t * Stateid.t * string
@@ -148,7 +148,7 @@ let exec_setopt loc n (v : Goptions.option_value) =
 
 (* lib_init  : list of modules to load *)
 (* lib_paths : list of paths *)
-let exec_init (lib_init : string list list) (lib_path : string list list) =
+let exec_init implicit (lib_init : string list list) (lib_path : string list list) =
   (* XXX: to_dir *)
   (* let to_name   = String.concat "."  in *)
   let to_dir    = String.concat "/"  in
@@ -173,7 +173,7 @@ let exec_init (lib_init : string list list) (lib_path : string list list) =
       fb_handler = (fun fb -> post_answer (Feedback (fb_opt fb)));
       require_libs = lib_require;
       iload_path   = lib_load_path;
-      implicit_std = false;
+      implicit_std = implicit;
       top_name     = "JsCoq";
       aopts        = { enable_async = None;
                        async_full   = false;
@@ -215,7 +215,8 @@ let jscoq_execute =
   | SetOpt (l, on, ov)  -> exec_setopt l on ov
   | GetOpt on           -> out_fn @@ CoqOpt (exec_getopt on)
 
-  | Init(lib_init, lib_path) -> let iid = exec_init lib_init lib_path in
+  | Init(implicit, lib_init, lib_path) ->
+                                let iid = exec_init implicit lib_init lib_path in
                                 out_fn @@ Log (Debug, str @@ "init " ^ (Stateid.to_string iid))
 
   | InfoPkg(base, pkgs) -> Lwt.async (fun () -> Jslibmng.info_pkg post_lib_event base pkgs)

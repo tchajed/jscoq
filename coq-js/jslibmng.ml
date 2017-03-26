@@ -78,6 +78,8 @@ let preload_file ?(refresh=false) base_path base_url (file, _hash) : unit Lwt.t 
 let jslib_add_load_path pkg pkg_path has_ml =
   let open Names                                                       in
   let coq_path = DirPath.make @@ List.rev @@ List.map Id.of_string pkg in
+  (* let implicit = try String.equal (List.hd pkg) "Coq" with _ -> false  in *)
+  (* Format.eprintf "setting implicit to %b for pkg: %s\n%!" implicit (DirPath.to_string coq_path); *)
   Loadpath.add_load_path ("./" ^ pkg_path) coq_path ~implicit:false;
   if has_ml then Mltop.add_ml_dir pkg_path
 

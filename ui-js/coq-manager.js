@@ -149,7 +149,6 @@ class CoqManager {
 
         // Default options
         this.options = {
-            mock:    false,
             prelude: true,
             debug:   true,
             wrapper_id: 'ide-wrapper',

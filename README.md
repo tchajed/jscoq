@@ -131,7 +131,6 @@ the constructor:
 * `all_pkgs`, `init_pkgs`: List of Coq's packages to show/preload.
 * `prelude: bool`: Whether to load Coq's prelude or not.
 * `implicit_libs`: Whether to make the initial libraries path implicit (that is to say, no `From Coq` etc... required)
-* `mock: bool`: Use a mock jsCoq object, useful for prototyping.
 
 ### Homotopy Type Theory
 

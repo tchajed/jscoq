@@ -37,6 +37,9 @@ type coq_opts = {
   (* Async flags *)
   aopts        : async_flags;
 
+  (* Enable debug mode *)
+  coq_debug    : bool;
+
   (* name of the top-level module *)
   top_name     : string;
 
@@ -50,6 +53,8 @@ type coq_opts = {
 (**************************************************************************)
 let coq_init opts =
   let open Names in
+
+  Flags.debug := opts.coq_debug;
 
   (* Custom toplevel is used for bytecode-to-js dynlink  *)
   let ser_mltop : Mltop.toplevel = let open Mltop in
@@ -148,8 +153,6 @@ let coq_init opts =
   (* Start the STM!!                                                        *)
   (**************************************************************************)
   Stm.init();
-
-  Flags.debug := false;
 
   (* Return the initial state of the STM *)
   Stm.get_current_state ()

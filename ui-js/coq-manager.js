@@ -316,7 +316,7 @@ class CoqManager {
         this.provider.mark(stm, "ok");
 
         // Get goals
-        this.coq.sendCommand(["Goals"]);
+        this.coq.sendCommand(["Goals", nsid]);
     }
 
     // Simplifier to the "rich" format coq uses.

@@ -36,6 +36,9 @@ type coq_opts = {
   (* Async flags *)
   aopts        : async_flags;
 
+  (* Enable debug mode *)
+  coq_debug    : bool;
+
   (* name of the top-level module *)
   top_name     : string;
 

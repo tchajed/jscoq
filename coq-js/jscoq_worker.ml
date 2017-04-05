@@ -59,7 +59,7 @@ type jscoq_cmd =
   | Cancel  of Stateid.t
   | Exec    of Stateid.t
 
-  | Goals
+  | Goals   of Stateid.t
 
   (* XXX: Not well founded... *)
   | SetOpt  of bool option * string list * gvalue
@@ -174,6 +174,7 @@ let exec_init implicit (lib_init : string list list) (lib_path : string list lis
       require_libs = lib_require;
       iload_path   = lib_load_path;
       implicit_std = implicit;
+      coq_debug    = true;
       top_name     = "JsCoq";
       aopts        = { enable_async = None;
                        async_full   = false;
@@ -210,7 +211,7 @@ let jscoq_execute =
   | Exec sid          -> let ndoc = Jscoq_doc.observe ~doc:!doc sid in
                          doc := ndoc; out_fn @@ Log (Debug, str @@ "observe " ^ (Stateid.to_string sid))
 
-  | Goals             -> out_fn @@ GoalInfo (Stm.get_current_state (), pp_opt @@ Icoq.pp_of_goals ())
+  | Goals _sid        -> out_fn @@ GoalInfo (Stm.get_current_state (), pp_opt @@ Icoq.pp_of_goals ())
 
   | SetOpt (l, on, ov)  -> exec_setopt l on ov
   | GetOpt on           -> out_fn @@ CoqOpt (exec_getopt on)

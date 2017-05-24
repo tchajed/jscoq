@@ -53,7 +53,7 @@ ifeq "${JSCOQ_DEBUG}" "yes"
 CAMLDEBUG+=-g
 endif
 
-CAMLWARN=-w @a-39-42-44-45
+CAMLWARN=-w @a-39-42-44-45-8
 BYTEFLAGS=-rectypes -safe-string $(CAMLDEBUG) $(CAMLWARN)
 
 # We use different compile/link flags.

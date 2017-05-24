@@ -17,6 +17,7 @@ endif
 # SYNC=rsync -av --filter='+ **.vo' --filter='+ **.cmo' --filter='+ **.cma' --filter='- **'
 SYNC=rsync -avq
 SYNCVO=echo "Updating $<" && rsync -avq --filter='+ */' --filter='+ **.vo' --filter='- *' --prune-empty-dirs
+SYNCELPI=echo "Updating $<" && rsync -avq --filter='+ */' --filter='+ **.elpi' --filter='- *' --prune-empty-dirs
 
 ########################################################################
 # Addons: coq-plugins-utils                                            #
@@ -242,6 +243,23 @@ $(RELALG_DEST):
 relalg: $(RELALG_DEST) $(RELALG_FILES)
 	$(SYNC) $(RELALG_CMA) $(RELALG_DEST)
 	$(SYNCVO) $(RELALG_HOME) $(RELALG_DEST)
+
+########################################################################
+# Addons: elpi                                                         #
+########################################################################
+
+ELPI_HOME=$(ADDONS_PATH)/coq-elpi/
+ELPI_DEST=coq-pkgs/elpi
+ELPI_CMA=$(addprefix $(ELPI_HOME)/src/, elpi_plugin.cma)
+
+$(ELPI_DEST):
+	mkdir -p $(ELPI_DEST)
+
+elpi: $(ELPI_DEST) $(ELPI_FILES)
+	$(SYNC)     $(ELPI_CMA)            $(ELPI_DEST)
+	$(SYNCVO)   $(ELPI_HOME)/theories/ $(ELPI_DEST)
+	$(SYNCELPI) $(ELPI_HOME)/          $(ELPI_DEST)
+	$(SYNCELPI) $(ELPI_HOME)/elpi/     $(ELPI_DEST)
 
 ########################################################################
 # Build helpers                                                        #

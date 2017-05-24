@@ -306,5 +306,9 @@ let pkgs : (string * string list * string list list) list=
 
     ; ["McExamples" ; "Cancel" ]
     ]
+  ; "elpi", [ ],
+    [ ["elpi"]
+    ; ["elpi"; "utils"]
+    ]
   ]
 

@@ -63,7 +63,7 @@ libs: coq-all-libs
 
 BUILDDIR=dist
 
-DISTHTML=newide.html #mtac_tutorial.html
+DISTHTML=elpi.html #mtac_tutorial.html
 BUILDOBJ=index.html $(DISTHTML) coq-pkgs ui-js ui-css ui-images examples
 DISTEXT=$(addprefix ui-external/,CodeMirror CodeMirror-TeX-input pace d3.min.js bootstrap.min.css)
 

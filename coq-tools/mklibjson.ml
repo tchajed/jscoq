@@ -13,7 +13,7 @@ let n_warn = ref 0
 
 (* Make the json file for the installed libraries *)
 let is_vo s =
-  Filename.check_suffix s ".vo"
+  Filename.(check_suffix s ".vo" || check_suffix s ".elpi")
 
 let is_cma s =
   Filename.check_suffix s ".cma" ||

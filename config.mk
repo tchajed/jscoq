@@ -2,10 +2,10 @@
 JOBS=8
 
 # Directory where the coq sources are
-COQDIR=~/external/coq-master+32bit/
+COQDIR=~/external/coq/coq-elpi/coq/
 
 # Addons to build
-ADDONS =
+ADDONS = elpi
 # Woking on coq-8.6:
 # ADDONS += ssr-libs coquelicot flocq sf cpdt dsp hott color
 # Woking on coq-8.5:
@@ -19,5 +19,5 @@ ADDONS_PATH=/home/egallego/external/coq
 HOTT_COQLIB=$(ADDONS_PATH)/HoTT/coq/theories/
 
 RELEASE_DIR=~/research/jscoq-builds/
-WEB_DIR=~/x80/rhino-trunk/
+WEB_DIR=~/x80/rhino-bull/
 HOTT_RELEASE=~/x80/rhino-hott/

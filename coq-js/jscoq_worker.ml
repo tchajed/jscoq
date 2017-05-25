@@ -71,7 +71,7 @@ type jscoq_answer =
   | CoqInfo   of string
 
   (* Merely Informative now *)
-  | Added     of Stateid.t * Loc.t
+  | Added     of Stateid.t * Loc.t option
 
   (* Main feedback *)
   | Cancelled of Stateid.t list

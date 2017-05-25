@@ -16,7 +16,7 @@ val add :
   ontop:Stateid.t    ->
   newid:Stateid.t    ->
   string             ->
-  Loc.t * [ `NewTip | `Unfocus of Stateid.t ] * ser_doc
+  Loc.t option * [ `NewTip | `Unfocus of Stateid.t ] * ser_doc
 
 val cancel  : doc:ser_doc -> Stateid.t -> Stateid.t list * ser_doc
 

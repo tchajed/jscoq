@@ -31,6 +31,7 @@ COQINCLUDE=-I $(COQDIR)/config     \
 
 COQOBJS=$(COQDIR)/lib/clib.cma			\
 	$(COQDIR)/lib/lib.cma			\
+	$(COQDIR)/intf/intf.cma			\
 	$(COQDIR)/kernel/kernel.cma		\
 	$(COQDIR)/library/library.cma		\
 	$(COQDIR)/engine/engine.cma	        \
@@ -43,7 +44,8 @@ COQOBJS=$(COQDIR)/lib/clib.cma			\
 	$(COQDIR)/vernac/vernac.cma		\
 	$(COQDIR)/stm/stm.cma			\
 	$(COQDIR)/toplevel/toplevel.cma		\
-	$(COQDIR)/parsing/highparsing.cma
+	$(COQDIR)/parsing/highparsing.cma       \
+	$(COQDIR)/API/API.cma
 
 CAMLDEBUG=
 
